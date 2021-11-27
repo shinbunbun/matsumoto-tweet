@@ -20,14 +20,17 @@ service: matsumoto-tweet
 # Check out our docs for more details
 frameworkVersion: '2'
 
+custom:
+  environment: ${file(./env.yml)}
+
 provider:
   name: aws
   runtime: nodejs12.x
   lambdaHashingVersion: 20201221
+  region: ap-northeast-1
 
 # you can overwrite defaults here
 #  stage: dev
-region: ap-northeast-1
 
 # you can add statements to the Lambda function's IAM Role here
 #  iamRoleStatements:
@@ -61,9 +64,8 @@ functions:
   hello:
     handler: handler.hello
     events:
-      - http:
-        path: api
-        method: get
+    - http: GET api
+    environment: ${self:custom.environment} 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
