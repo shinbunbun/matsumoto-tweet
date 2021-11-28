@@ -1,7 +1,7 @@
 const { TwitterApi } = require('twitter-api-v2');
 
 const createTweetMessage = () => {
-  const i = Math.floor(Math.random() * (140 - 1 + 1) + 1);
+  const i = Math.floor(Math.random() * (132 - 1 + 1) + 1);
   let baseMessage = 'まつもとせんぱ';
   for (let j = 0; j < i; j += 1) {
     baseMessage += 'ー';
